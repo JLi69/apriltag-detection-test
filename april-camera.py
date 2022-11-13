@@ -80,13 +80,15 @@ def main():
 
             dist = round(distanceToCam(KNOWN_WIDTH, focalLen, side) * 100.0) / 100.0
 
+            angle = -90.0 * (cX - vid.get(cv2.CAP_PROP_FRAME_WIDTH) / 2.0) / vid.get(cv2.CAP_PROP_FRAME_WIDTH) * 2.0
+
             tagFamily = r.tag_family.decode("utf-8")
             cv2.putText(image, tagFamily, (ptA[0], ptA[1] - 15),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
             #distance 
             cv2.putText(image, "Distance: " + str(dist) + "ft", (ptA[0], ptA[1] - 35),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2) 
-            cv2.putText(image, "Angle: " + str(dist) + "ft", (ptA[0], ptA[1] - 35),
+            cv2.putText(image, "Angle: " + str(angle) + "deg", (ptA[0], ptA[1] - 55),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2) 
             print("[INFO] Tag family: {}".format(tagFamily)) 
             
